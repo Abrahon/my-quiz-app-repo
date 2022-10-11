@@ -22,7 +22,7 @@ const Statistic = () => {
 
         },
         {
-            name: 'HTML',
+            name: 'Git',
             question: 15,
             quiz: 3908,
 
