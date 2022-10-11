@@ -7,19 +7,19 @@ const Statistic = () => {
             name: 'Js',
             question: 12,
             quiz: 2400,
-            amt: 2400,
+
         },
         {
             name: 'React',
-            question: 10,
+            question: 9,
             quiz: 1398,
-            amt: 2210,
+
         },
         {
-            name: 'Cass',
-            question: 9,
+            name: 'Css',
+            question: 10,
             quiz: 9800,
-            amt: 2290,
+
         },
         {
             name: 'HTML',
@@ -32,7 +32,7 @@ const Statistic = () => {
         <div>
             <h1>This is a barchart of my quiz</h1>
 
-            <BarChart width={300} height={400} data={data}>
+            <BarChart width={400} height={500} data={data}>
                 <Bar dataKey="question" fill="blue" />
                 <XAxis dataKey="name" />
                 <YAxis />
