@@ -18,13 +18,15 @@ const Home = () => {
 
 
             </div>
-            <h4>quiz Topic:{home.length}</h4>
-            {
-                home.map(topic => <Topic
-                    key={topic.id}
-                    topic={topic}
-                ></Topic>)
-            }
+            <div className='d-flex'>
+                <h4>quiz Topic:{home.length}</h4>
+                {
+                    home.map(topic => <Topic
+                        key={topic.id}
+                        topic={topic}
+                    ></Topic>)
+                }
+            </div>
 
         </div >
 

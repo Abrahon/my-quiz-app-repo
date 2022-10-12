@@ -1,45 +1,26 @@
 import React from 'react';
-import { BarChart, Bar, Cell, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
+import { useLoaderData } from 'react-router-dom';
+import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 
 const Statistic = () => {
-    const data = [
-        {
-            name: 'Js',
-            question: 12,
-            quiz: 2400,
+    const quizData = useLoaderData()
 
-        },
-        {
-            name: 'React',
-            question: 9,
-            quiz: 1398,
-
-        },
-        {
-            name: 'Css',
-            question: 10,
-            quiz: 9800,
-
-        },
-        {
-            name: 'Git',
-            question: 15,
-            quiz: 3908,
-
-        },
-    ];
     return (
-        <div>
+        <div className='mt-5'>
             <h1>This is a barchart of my quiz</h1>
 
-            <BarChart width={400} height={500} data={data}>
-                <Bar dataKey="question" fill="blue" />
-                <XAxis dataKey="name" />
-                <YAxis />
-                <Tooltip></Tooltip>
-            </BarChart>
-
-
+            <div>
+                <ResponsiveContainer width='92%' height={400}>
+                    <BarChart data={quizData.data}>
+                        <CartesianGrid strokeDasharray="3 3" />
+                        <XAxis dataKey="name" />
+                        <YAxis />
+                        <Tooltip />
+                        <Legend />
+                        <Bar dataKey="total" fill="#8884d8" />
+                    </BarChart>
+                </ResponsiveContainer>
+            </div>
 
         </div>
     );
