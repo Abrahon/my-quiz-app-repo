@@ -1,61 +1,55 @@
+
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import './App.css';
-import Blog from './Component/Blog/Blog';
+
 import Home from './Component/Home/Home';
-import HomeDetails from './Component/HomeDetails/HomeDetails';
-import Quiz from './Component/Quiz/Quiz';
-
+import Topics from './Component/Topics/Topics';
+import Main from './layout/Main';
 import Statistic from './Component/Statistic/Statistic';
-import Main from './Layout/Main';
-
+import Blog from './Component/Blog/Blog';
+import QuizDetails from './Component/QuizDetails/QuizDetails';
+import Error from './Component/Error/Error';
 
 function App() {
   const router = createBrowserRouter([
     {
       path: '/',
+      errorElement: <Error></Error>,
       element: <Main></Main>,
-
       children: [
         {
           path: '/',
           loader: () => fetch('https://openapi.programming-hero.com/api/quiz'),
-          element: <Home></Home >
-        },
-        {
-          path: '/home',
-          loader: () => fetch('https://openapi.programming-hero.com/api/quiz'),
           element: <Home></Home>
         },
         {
-          path: '/statistic',
-          loader: () => fetch('https://openapi.programming-hero.com/api/quiz'),
-          element: <Statistic></Statistic>
-        },
-        {
-          path: '/blog',
-          element: <Blog></Blog>
-        },
-        {
-          path: '/quiz/:quizId',
-          loader: () => async ({ params }) => {
-            return fetch(`https://openapi.programming-hero.com/api/quiz/${params.quizId}`)
+          path: '/home/:id',
+          loader: async ({ params }) => {
+            return fetch(`https://openapi.programming-hero.com/api/quiz/${params.id}`)
           },
-          element: <Quiz></Quiz>
-
+          element: <QuizDetails></QuizDetails>
         },
-
+        {
+          path: '/',
+          element: <Topics></Topics>
+        },
+        {
+          path: '/Statistic',
+          loader: async () => {
+            return fetch('https://openapi.programming-hero.com/api/quiz');
+          },
+          element: < Statistic ></Statistic >
+        },
+        {
+          path: '/Blog',
+          element: <Blog></Blog>
+        }
       ]
-
-    },
-
-    {
-      path: '*',
-      element: <div className='notfound text-center fs-1 	mt-5'> element not found 404</div>
     }
   ])
   return (
-    <div>
-      <RouterProvider router={router}></RouterProvider>
+    <div className="App">
+      <RouterProvider router={router} ></RouterProvider>
     </div>
   );
 }

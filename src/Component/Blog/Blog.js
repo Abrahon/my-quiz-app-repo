@@ -1,5 +1,5 @@
 import React from 'react';
-import Header from '../Header/Header';
+// import Header from '../Header/Header';
 
 const Blog = () => {
     return (
@@ -13,7 +13,7 @@ const Blog = () => {
                         </button>
                     </h2>
                     <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
-                        <div class="accordion-body">React Router is a standard library for routing in React. It enables the navigation among views of various components in a React Application, allows changing the browser URL, and keeps the UI in sync with the URL.</div>
+                        <div class="accordion-body">React Router is a standard library for routing in React. It enables the navigation among views of various Component in a React Application, allows changing the browser URL, and keeps the UI in sync with the URL.</div>
                     </div>
                 </div>
                 <div class="accordion-item">

@@ -1,48 +1,39 @@
 import React, { useState } from 'react';
-import { useLoaderData } from 'react-router-dom';
-import { toast } from 'react-toastify';
-import Question from '../Question/Question';
-
-const Quiz = () => {
-    const quizData = useLoaderData()
-    const [rightAns, setRightAns] = useState([])
-    //console.log()
-    const right = () => toast.success("Your answer is correct 😊", {
-        position: "top-right",
-        autoClose: 5000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "colored",
-    });
-    const wrong = () => toast.error("Your answer is wrong 😞", {
-        position: "top-right",
-        autoClose: 5000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "colored",
-    })
-    const handleAns = (option, correctAns) => {
-        if (option === correctAns) {
-            right()
-            if (!(rightAns.includes(correctAns))) {
-                let rightAnsArr = [...rightAns, correctAns]
-                setRightAns(rightAnsArr)
-            }
+import { FaEye } from 'react-icons/fa'
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import './Quiz.css'
+const Quiz = ({ quiz }) => {
+    const [isShow, setIsShow] = useState(false);
+    const { options, question, correctAnswer } = quiz;
+    const handleAnsShow = () => {
+        !isShow && toast.success(correctAnswer)
+        setIsShow(!isShow);
+    }
+    // console.log(quiz);
+    const hendleAns = (ans) => {
+        if (correctAnswer === ans) {
+            toast.success("wow !! your answers is right!!!");
         }
         else {
-            wrong()
+            toast.error("wrong ! your answers is wrong!!!!");
         }
     }
+    // if (isShow) {
+    //     toast.success(`${correctAnswer}`);
+    // }
     return (
-        <div>
-            <h2>this quiz:{quizData.data}</h2>
-
+        <div className='quiz-container container mt-5'>
+            <div className='eye-icon '>
+                <h3 className="question" > Quiz :{question} </h3>
+                <p className='icon' onClick={() => { handleAnsShow(true) }}><FaEye></FaEye> </p>
+            </div>
+            <div className='option'>
+                {
+                    options.map(option => <p className='option-p' onClick={() => hendleAns(option)}>{option} </p>)
+                }
+            </div>
+            <ToastContainer />
         </div>
     );
 };

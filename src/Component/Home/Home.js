@@ -1,37 +1,25 @@
 import React from 'react';
 import { useLoaderData } from 'react-router-dom';
-import Topic from '../Topic/Topic';
-import img from './img.png'
-import './Home.css';
+import Banner from '../Banner/Banner';
+import Topics from '../Topics/Topics';
+import './Home.css'
 
 const Home = () => {
-    const quizTopic = useLoaderData();
-    const home = quizTopic.data
-    console.log(home);
+    const carts = useLoaderData().data;
+    // console.log(carts);
     return (
+
         <div>
-            <div className='d-flex sm-3 m-3'>
-                <img className='headerImg' src={img} alt="" />
-                <div>
-                    <h2>This is my firs quiz website .I created this site by react router with bootstrap.Here we have question for four different subject React,Javascript,Css, and Git</h2>
-                </div>
-
-
-            </div>
-            <div className='d-flex'>
-                <h4>quiz Topic:{home.length}</h4>
+            <Banner></Banner>
+            <div className='cart-container container'>
                 {
-                    home.map(topic => <Topic
-                        key={topic.id}
-                        topic={topic}
-                    ></Topic>)
+                    carts.map(cart => <Topics
+                        kye={cart.id}
+                        cart={cart}
+                    ></Topics>)
                 }
             </div>
-
-        </div >
-
-
-
+        </div>
     );
 };
 
