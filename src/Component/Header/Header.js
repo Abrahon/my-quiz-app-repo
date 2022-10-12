@@ -10,7 +10,7 @@ const Header = () => {
     return (
         <Navbar className='navber' bg="light" expand="lg">
             <Container>
-                <Navbar.Brand className='fs-2 fw-bold text-primary py-2' href="#home">Quiz Learning School</Navbar.Brand>
+                <Navbar.Brand className='fs-2 fw-bold text-primary py-2' href="#home">Quiz Prime App</Navbar.Brand>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="ms-auto ">
